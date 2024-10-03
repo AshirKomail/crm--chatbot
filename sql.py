@@ -91,7 +91,6 @@ Example Response Structure:
 - Month: February, Sales: 1500
 """
 
-
 system_message = SystemMessage(content=SQL_PREFIX)
 agent_executor = create_react_agent(llm, tools, messages_modifier=system_message)
 
@@ -105,7 +104,8 @@ option = st.sidebar.selectbox(
     ("CRM Chatbot", "Graph Generator")
 )
 
-# # Function to handle AI response and query execution
+# Function to handle AI response and query execution
+
 def get_response(query):
     final_state = agent_executor.invoke({"messages": [HumanMessage(content=query)]})
     return final_state["messages"][-1].content
@@ -127,12 +127,12 @@ def display_message(role, content):
             """, unsafe_allow_html=True)
 
 
-# CRM Chatbot
+# CRM Chatbot chat with database
 if option ==  "CRM Chatbot":
     crm_chatbot(option, display_message, get_response)
 
 
-# Graph Generator
+# Graph Generate from database data with have multi tables
 elif option == "Graph Generator":
        generate_graph(db, get_response)
 
