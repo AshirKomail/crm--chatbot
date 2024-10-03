@@ -106,9 +106,6 @@ option = st.sidebar.selectbox(
 )
 
 # # Function to handle AI response and query execution
-# # Function to handle AI response and query execution
-# # Function to handle AI response and query execution
-# # Function to handle AI response and query execution
 def get_response(query):
     final_state = agent_executor.invoke({"messages": [HumanMessage(content=query)]})
     return final_state["messages"][-1].content
